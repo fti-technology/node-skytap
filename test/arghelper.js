@@ -266,6 +266,16 @@ describe('arghelper', function() {
       expect(result.url).to.equal('http://localhost');
     });
 
+    it('should handle empty params on GET request', function () {
+      var opts = {
+        url: 'http://localhost',
+        method: 'GET',
+        params: {}
+      };
+      var result = helpers.convertReqParams(opts);
+      // Make sure doesn't append `?` followed by empty string
+      expect(result.url).to.equal('http://localhost');
+    });
 
     it('should handle no params on POST/PUT/DELETE request', function () {
       var opts = {
